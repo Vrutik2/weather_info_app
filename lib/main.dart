@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Weather Info Home'),
+      home: const MyHomePage(title: 'Weather Info'),
     );
   }
 }
@@ -30,13 +31,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<MyHomePage> {
-  final TextEditingController _controller = TextEditingController(); // Fix variable naming
+  final TextEditingController _controller =
+      TextEditingController(); // Fix variable naming
   String _cityName = '';
   String _weatherInfo = '';
 
-void _fetchWeather() {
+  void _fetchWeather() {
+    final Random random = Random();
+    final int temperature = random.nextInt(16) +
+        15; // Generates random temperature between 15 and 30
+    final List<String> conditions = ['Sunny', 'Cloudy', 'Rainy'];
+    final String condition = conditions[random
+        .nextInt(conditions.length)]; // Randomly selects a weather condition
 
-}
+    setState(() {
+      _cityName = _controller.text;
+      _weatherInfo = 'Temperature: $temperature°C, Condition: $condition';  
+      });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,9 +75,7 @@ void _fetchWeather() {
             Text(_weatherInfo),
           ],
         ),
-        
       ),
     );
   }
 }
-
