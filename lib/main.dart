@@ -64,7 +64,7 @@ class _HomePageState extends State<MyHomePage> {
             TextField(
               controller: _controller,
               decoration: const InputDecoration(
-                hintText: 'Enter the city name',
+                hintText: 'Enter the city name:',
               ),
             ),
             ElevatedButton(
