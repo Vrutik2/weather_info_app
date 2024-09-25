@@ -20,24 +20,52 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
   final String title;
+
+  @override
+  State<MyHomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<MyHomePage> {
+  final TextEditingController _controller = TextEditingController(); // Fix variable naming
+  String _cityName = '';
+  String _weatherInfo = '';
+
+void _fetchWeather() {
+
+}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(title),
+        title: Text(widget.title),
       ),
       body: Center(
-        child: const Text(
-          'Welcome to the Weather App!',
-          style: TextStyle(fontSize: 24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            TextField(
+              controller: _controller,
+              decoration: const InputDecoration(
+                hintText: 'Enter the city name',
+              ),
+            ),
+            ElevatedButton(
+              onPressed: _fetchWeather,
+              child: const Text('Fetch Weather'),
+            ),
+            Text(_cityName),
+            Text(_weatherInfo),
+          ],
         ),
+        
       ),
     );
   }
 }
+
