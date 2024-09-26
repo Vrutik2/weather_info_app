@@ -31,7 +31,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<MyHomePage> {
-  final TextEditingController _controller = TextEditingController(); // Fix variable naming
+  final TextEditingController _controller =
+      TextEditingController(); // Fix variable naming
   String _cityName = '';
   String _weatherInfo = '';
   List<Map<String, String>> _sevenDayForecast = [];
@@ -39,13 +40,14 @@ class _HomePageState extends State<MyHomePage> {
   // Function to simulate fetching current weather
   void _fetchCurrentWeather() {
     final Random random = Random();
-    final int temperature = random.nextInt(16) + 15; // Random temp between 15 and 30
+    final int temperature =
+        random.nextInt(16) + 15; // Random temp between 15 and 30
     final List<String> conditions = ['Sunny', 'Cloudy', 'Rainy'];
     final String condition = conditions[random.nextInt(conditions.length)];
 
     setState(() {
       _cityName = _controller.text;
-      _weatherInfo = 'Temperature: $temperature°C, Condition: $condition';  
+      _weatherInfo = 'Temperature: $temperature°C, Condition: $condition';
     });
   }
 
@@ -57,7 +59,8 @@ class _HomePageState extends State<MyHomePage> {
     List<Map<String, String>> forecast = [];
     for (int i = 0; i < 7; i++) {
       int temp = random.nextInt(16) + 15; // Random temp for each day
-      String cond = conditions[random.nextInt(conditions.length)]; // Random condition for each day
+      String cond = conditions[
+          random.nextInt(conditions.length)]; // Random condition for each day
       forecast.add({
         'day': 'Day ${i + 1}',
         'temperature': '$temp°C',
@@ -67,7 +70,7 @@ class _HomePageState extends State<MyHomePage> {
 
     setState(() {
       _cityName = _controller.text;
-      _sevenDayForecast = forecast;  // Update the forecast data
+      _sevenDayForecast = forecast; // Update the forecast data
     });
   }
 
@@ -103,7 +106,8 @@ class _HomePageState extends State<MyHomePage> {
               if (_cityName.isNotEmpty) ...[
                 Text(
                   _cityName,
-                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
                 Text(
